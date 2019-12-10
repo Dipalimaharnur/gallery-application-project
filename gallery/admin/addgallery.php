@@ -26,7 +26,7 @@ $ename = $_POST['gname'];
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Fill following Details To Add Gallery
+                            Fill This Form To Add Gallery
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -34,7 +34,7 @@ $ename = $_POST['gname'];
                                     <form action="glink.php" method="post" enctype="multipart/form-data" name="upload">
                                        
                                         <div class="form-group">
-                                            <label>Select Album Name or Title</label>
+                                            <label>Select Event Name or Title</label>
                            <?php
 			include"connect.php";
 			$sql = "select * from tbl_album where status='process'";

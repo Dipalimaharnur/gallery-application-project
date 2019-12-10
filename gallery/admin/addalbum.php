@@ -1,5 +1,5 @@
 <?php session_start();
-if(isset($_SESSION['uname']))
+if( ($_SESSION['uname']))
 {
 ?>
 <?php include "header1.php"; ?>
@@ -32,9 +32,9 @@ $src = imagecreatefromjpeg($uploadedfile);
 list($width,$height)=getimagesize($uploadedfile);
 
 
-$newwidth=300;
+$newwidth=290;
 $newheight=($height/$width)*300;
-$tmp=imagecreate($newwidth,$newheight);
+$tmp=imagecreatetruecolor($newwidth,$newheight);
 
 imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
 
@@ -49,7 +49,7 @@ move_uploaded_file($_FILES["upload"]["tmp_name"],"aupload/".$rd.$_FILES["upload"
 if (empty($aname))
 {
  echo " <div class='alert alert-danger'><strong>ERROR</strong> - Empty fields are not allowed !</div>"; 
- }
+ }	
 else
 {
 include "connect.php";
@@ -57,7 +57,7 @@ include "connect.php";
 $query="INSERT INTO tbl_album(name,adesc,image,date,status) VALUES ('$aname','$adesc','$photo','$adate','$status')";
 if(mysqli_query($con,$query))
 	{
-echo " <div class='alert alert-success'>Your New Album Is Successfully Added. <a href='viewallalbums.php'>View albums</a>	</div>";
+echo " <div class='alert alert-success'>Your New Album Is Successfully Added. <a href='viewallalbums.php'>View albums</a> |<a href='addevent.php'> Add new album</a></div>";
 	}
 	else
 	{
@@ -75,7 +75,7 @@ echo " <div class='alert alert-success'>Your New Album Is Successfully Added. <a
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Fill Following Details To Add Album (Only upload jpg files only)
+                            Fill This Form To Add Album (Only upload jpg files only)
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -90,7 +90,7 @@ echo " <div class='alert alert-success'>Your New Album Is Successfully Added. <a
                                         </div>
                                         <div class="form-group">
                                         
-                                            <label>Description</label>
+                                            <label>Event Description</label>
                                              <p class="help-block" style="font-weight:bold">Max 1000 Character Allow </p>
                                              <textarea class="form-control" rows="3" placeholder="Enter Description" name="adesc" maxlength="1000"></textarea>
                                             
@@ -99,14 +99,14 @@ echo " <div class='alert alert-success'>Your New Album Is Successfully Added. <a
                                         </div>
                                        
                                         <div class="form-group">
-                                            <label>Album Image(Cover Image)</label>
+                                            <label>Album Image</label>
                                             <input type="file" name="upload"  id="upload" />
                 
                                             <p class="help-block">Example "Recomended Image Size in pixel 400 X 300"</p>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                                        <button type="reset" class="btn btn-default">Reset</button>
+                                        <button type="submit" class="btn btn-primary" name="submit">Submit Button</button>
+                                        <button type="reset" class="btn btn-default">Reset Button</button>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

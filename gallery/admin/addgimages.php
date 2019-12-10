@@ -55,7 +55,7 @@ $src = imagecreatefromjpeg($tmp_name);
 list($width,$height)=getimagesize($tmp_name);
 $newwidth=($width/$height)*150;
 $newheight=150;
-$tmp=imagecreate($newwidth,$newheight);
+$tmp=imagecreatetruecolor($newwidth,$newheight);
 imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
 $rd=rand();
 $filename = "gcatch/".$file_name;
@@ -77,7 +77,7 @@ move_uploaded_file($file_tmp,"$desired_dir/".$file_name);
         }
     }
 	if(empty($errors)){
-	echo " <div class='alert alert-success'>Your Photos Is Successfully Uploded. <a href='viewsgallery.php'>View Photos</a> </div>";
+	echo " <div class='alert alert-success'>Your Photos Is Successfully Uploded. <a href='viewphotos.php'>View Photos</a> |<a href='addevent.php'> Add new Photos</a></div>";
 	
 	}
 }
